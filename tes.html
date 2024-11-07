@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Layout with Images</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+
+    .column {
+      flex: 1;
+      padding: 20px;
+      margin: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .column img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .column h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .column p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* For responsive design */
+    @media (max-width: 768px) {
+      .column {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="column">
+      <img src="https://via.placeholder.com/400x200" alt="Breaking News">
+      <h2>Breaking News: Major Event</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in ante felis. Vivamus vel risus quis dolor consequat cursus.</p>
+    </div>
+    <div class="column">
+      <img src="https://via.placeholder.com/400x200" alt="World News">
+      <h2>World News: Global Update</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor nulla at metus facilisis, at fringilla libero varius.</p>
+    </div>
+    <div class="column">
+      <img src="https://img.freepik.com/free-photo/vibrant-transparent-leaves-with-copy-space_23-2148239707.jpg" alt="Sports Highlights">
+      <h2>Sports: Latest Highlights</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vehicula mi orci, vitae consequat lorem feugiat eget.</p>
+    </div>
+  </div>
+
+</body>
+</html>
