@@ -1,77 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News Layout with Images</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 20px;
-    }
-
-    .column {
-      flex: 1;
-      padding: 20px;
-      margin: 10px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-    }
-
-    .column img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    .column h2 {
-      color: #333;
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-
-    .column p {
-      color: #666;
-      line-height: 1.6;
-    }
-
-    /* For responsive design */
-    @media (max-width: 768px) {
-      .column {
-        flex: 1 1 100%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage Shopee</title>
+    <style>
+        body {
+          margin:auto;
+          width:50%;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header input[type="search"] {
+            width: 80%;
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+        }
+        .header-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .section {
+            padding: 15px;
+        }
+        .voucher, .promo, .promo img {
+            width: 100%;
+            margin: 10px 0;
+            display: block;
+        }
+        .voucher, .promo, .promo-item {
+            border-radius: 8px;
+            background-color: white;
+            padding: 10px;
+        }
+        .promo-item {
+            display: inline-block;
+            width: 22%;
+            margin-right: 2%;
+            text-align: center;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+        }
+        .footer a {
+            text-decoration: none;
+            color: #ff5722;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="column">
-      <img src="https://via.placeholder.com/400x200" alt="Breaking News">
-      <h2>Breaking News: Major Event</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in ante felis. Vivamus vel risus quis dolor consequat cursus.</p>
+<div class="header">
+    <span>21.16</span>
+    <input type="search" placeholder="HP Rp 1 Rupiah Infinix">
+    <div class="header-icons">
+        <span>&#128276;</span>
+        <span>&#128722;</span>
+        <span>&#128172;</span>
     </div>
-    <div class="column">
-      <img src="https://via.placeholder.com/400x200" alt="World News">
-      <h2>World News: Global Update</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor nulla at metus facilisis, at fringilla libero varius.</p>
+</div>
+
+<div class="section">
+    <div class="voucher">
+        <h3>ZONA PENGGUNA BARU</h3>
+        <div>
+            <p>Gratis Ongkir Rp0</p>
+            <button>Klaim</button>
+        </div>
     </div>
-    <div class="column">
-      <img src="https://img.freepik.com/free-photo/vibrant-transparent-leaves-with-copy-space_23-2148239707.jpg" alt="Sports Highlights">
-      <h2>Sports: Latest Highlights</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vehicula mi orci, vitae consequat lorem feugiat eget.</p>
+
+    <div class="promo">
+        <h3>PROMO PASTI MURAH</h3>
+        <div>
+            <div class="promo-item">
+                <img src="download (2).jpg" style="width:100%">
+                <p>Rp1</p>
+            </div>
+            <div class="promo-item">
+                <img src="download (1).jpg"width:100%">
+                <p>Rp1.000</p>
+            </div>
+            <div class="promo-item">
+                <img src="download (3).jpg" style="width:100%">
+                <p>Rp3.000</p>
+            </div>
+            <div class="promo-item">
+                <img src="download (4).jpg" style="width:100%">
+                <p>Rp5.000</p>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
+<div class="footer">
+    <a href="#">Beranda</a>
+    <a href="#">Produk Baru</a>
+    <a href="#">Live</a>
+    <a href="#">Video</a>
+    <a href="#">Notifikasi</a>
+    <a href="#">Saya</a>
+</div>
 
 </body>
 </html>

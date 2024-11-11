@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hindari Rintangan</title>
+    <style>
+        /* Style dasar untuk tubuh */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        /* Arena permainan */
+        #gameArea {
+            position: relative;
+            width: 300px;
+            height: 500px;
+            background-color: #222;
+            overflow: hidden;
+            border: 2px solid #555;
+        }
+
+        /* Pemain */
+        .player {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: limegreen;
+            bottom: 10px;
+            left: 135px;
+        }
+
+        /* Rintangan */
+        .obstacle {
+            position: absolute;
+            width: 60px;
+            height: 20px;
+            background-color: red;
+            top: 0;
+        }
+
+        /* Skor */
+        .score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameArea">
+        <div class="player" id="player"></div>
+        <div class="score" id="score">Score: 0</div>
+    </div>
+
+    <script>
+        const gameArea = document.getElementById("gameArea");
+        const player = document.getElementById("player");
+        const scoreDisplay = document.getElementById("score");
+        
+        let playerPosition = 135;
+        let score = 0;
+        let gameOver = false;
+
+        // Fungsi untuk membuat rintangan
+        function createObstacle() {
+            const obstacle = document.createElement("div");
+            obstacle.classList.add("obstacle");
+            obstacle.style.left = Math.floor(Math.random() * 240) + "px"; // Posisi acak
+            gameArea.appendChild(obstacle);
+            
+            // Menggerakkan rintangan ke bawah
+            const obstacleInterval = setInterval(() => {
+                if (gameOver) {
+                    clearInterval(obstacleInterval);
+                    return;
+                }
+
+                const obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue("top"));
+                obstacle.style.top = obstacleTop + 4 + "px";
+
+                // Cek tabrakan
+                if (isCollision(player, obstacle)) {
+                    alert("Game Over! Skor Anda: " + score);
+                    gameOver = true;
+                    clearInterval(obstacleInterval);
+                }
+
+                // Jika rintangan keluar dari area, hapus dan tambah skor
+                if (obstacleTop > 500) {
+                    obstacle.remove();
+                    score++;
+                    scoreDisplay.textContent = "Score: " + score;
+                    clearInterval(obstacleInterval);
+                }
+            }, 20);
+        }
+
+        // Fungsi untuk memeriksa tabrakan
+        function isCollision(player, obstacle) {
+            const playerRect = player.getBoundingClientRect();
+            const obstacleRect = obstacle.getBoundingClientRect();
+
+            return !(
+                playerRect.top > obstacleRect.bottom ||
+                playerRect.bottom < obstacleRect.top ||
+                playerRect.right < obstacleRect.left ||
+                playerRect.left > obstacleRect.right
+            );
+        }
+
+        // Gerakkan pemain ke kiri atau kanan
+        document.addEventListener("keydown", (event) => {
+            if (gameOver) return;
+
+            if (event.key === "ArrowLeft" && playerPosition > 0) {
+                playerPosition -= 20;
+                player.style.left = playerPosition + "px";
+            } else if (event.key === "ArrowRight" && playerPosition < 270) {
+                playerPosition += 20;
+                player.style.left = playerPosition + "px";
+            }
+        });
+
+        // Loop untuk membuat rintangan baru
+        function gameLoop() {
+            if (!gameOver) {
+                createObstacle();
+                setTimeout(gameLoop, 1500); // Rintangan muncul setiap 1,5 detik
+            }
+        }
+
+        // Memulai game loop
+        gameLoop();
+    </script>
+</body>
+</html>
